@@ -22,7 +22,7 @@ class AuthController extends Controller
         $remember = $request->filled('remember');
 
         if (Auth::attempt($credentials, $remember)) {
-            return back()->with('success', 'Login Feito Com Sucesso');
+            return redirect()->route('tarefa.index');
         }
 
         return back()->with('error', 'Credencias Inválidas');
@@ -49,7 +49,7 @@ class AuthController extends Controller
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, false)) {
-            return back()->with('success', 'Cadastro Feito Com Sucesso');
+            return redirect()->route('login')->with('success', 'Cadastro Feito Com Sucesso. Agora faça login para acessar sua conta');
         }
 
         return back()->with('error', 'Erro ao Efetuar Cadastro');
@@ -59,6 +59,6 @@ class AuthController extends Controller
     public function logout(Request $request)
     {
         Auth::logout();
-        return redirect()->route('auth.login')->with('success', 'Você foi Desconectado!');
+        return redirect()->route('login')->with('success', 'Você foi Desconectado!');
     }
 }
