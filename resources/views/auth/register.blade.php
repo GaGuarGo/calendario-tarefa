@@ -2,7 +2,7 @@
     <div class="min-h-screen flex items-center justify-center">
         <div class="w-full bg-white p-8 rounded-lg shadow-md">
             <h2 class="text-2xl font-bold mb-6 text-center">Cadastro</h2>
-
+            <x-flash-message/>
             <form action="{{route('auth.register')}}" method="POST">
                 @csrf
 

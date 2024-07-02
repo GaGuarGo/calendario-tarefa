@@ -14,15 +14,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/login', function () {
+Route::get('login', function () {
     return view('auth.login');
 });
-Route::post('/login', [AuthController::class, 'login'])->name('auth.login');
+Route::post('login', [AuthController::class, 'login'])->name('auth.login');
 
-Route::get('/register', function () {
+Route::get('register', function () {
     return view('auth.register');
 });
-Route::post('/register', [AuthController::class, 'register'])->name('auth.register');
+Route::post('register', [AuthController::class, 'register'])->name('auth.register');
+Route::delete('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
 
 

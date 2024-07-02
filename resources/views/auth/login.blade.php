@@ -1,14 +1,17 @@
 <x-layout>
     <div class="min-h-screen flex items-center justify-center">
-        <div class="w-full bg-white p-8 rounded-lg shadow-md">
-            <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+        <x-card class="w-full">
+
 
             <form action="{{route("auth.login")}}" method="POST">
                 @csrf
+                <h2 class="text-2xl font-bold mb-6 text-center">Login</h2>
+                <x-flash-message/>
                 <div class="mb-4">
                     <label for="email" class="block text-gray-700">Email:</label>
                     <input type="email" name="email" id="email"
-                           class="w-full p-2 border rounded-lg @error('email') border-red-500 @enderror" value="{{old('email') ?? request('email')}}">
+                           class="w-full p-2 border rounded-lg @error('email') border-red-500 @enderror"
+                           value="{{old('email') ?? request('email')}}">
                     <x-error-label>email</x-error-label>
 
                 </div>
@@ -29,7 +32,6 @@
                     </x-button>
                 </div>
             </form>
-
-        </div>
+        </x-card>
     </div>
 </x-layout>
