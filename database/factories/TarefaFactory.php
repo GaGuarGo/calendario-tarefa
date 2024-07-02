@@ -17,7 +17,10 @@ class TarefaFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'titulo' => $this->faker->sentence,
+            'descricao' => $this->faker->paragraph(3),
+            'prazo' => now()->addDays(random_int(1, 30)),
+            'status' => random_int(0, 1) == 1,
         ];
     }
 }
