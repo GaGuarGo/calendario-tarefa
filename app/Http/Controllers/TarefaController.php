@@ -16,11 +16,6 @@ class TarefaController extends Controller
         $search = request('search');
         $filter = $request->input("filter");
 
-
-        if (!empty($search)) {
-            $query->where('titulo', 'LIKE', '%' . $search . '%');
-        }
-
         $query = match ($filter) {
             'today' => $query->todayTasks(),
             'done' => $query->doneTasks(),
@@ -29,6 +24,9 @@ class TarefaController extends Controller
             default => $query->latest(),
         };
 
+        if (!empty($search)) {
+            $query->where('titulo', 'LIKE', '%' . $search . '%');
+        }
 
         $tarefas = $query->orderBy("prazo")->get();
 
