@@ -41,7 +41,7 @@ class Tarefa extends Model
         return $query->where('status', '=', false);
     }
     public function scopeLateTasks(Builder $query) : Builder | QueryBuilder  {
-        return $query->where('prazo', '<', Carbon::today());
+        return $query->where('prazo', '<', Carbon::today())->where('status', '=', false);
     }
 
     public function scopeTodayTasks(Builder $query) : Builder | QueryBuilder  {
