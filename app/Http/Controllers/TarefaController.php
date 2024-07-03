@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Resources\TarefaResource;
 use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
@@ -113,4 +114,12 @@ class TarefaController extends Controller
         $tarefa->forceDelete();
         return redirect()->back()->with('success', 'Tarefa removida para sempre!');
     }
+
+    public function getUserTasksJson(){
+
+        $tarefas = Tarefa::where('user_id', auth()->id())->get();
+
+        return TarefaResource::collection($tarefas);
+    }
+
 }
