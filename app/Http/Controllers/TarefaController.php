@@ -47,7 +47,14 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+       $validatedData = $request->validate([
+            'titulo' => 'string|required|min:3|max:100',
+            'descricao' => 'string|required|min:10|',
+            'prazo' => 'date|required',
+        ]);
+
+        auth()->user()?->tarefas()->create($validatedData);
+        return redirect()->route('tarefa.index')->with('success', 'Tarefa Adicionada com sucesso!');
     }
 
     /**

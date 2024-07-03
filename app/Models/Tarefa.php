@@ -13,6 +13,8 @@ class Tarefa extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['titulo', 'descricao', 'prazo'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
