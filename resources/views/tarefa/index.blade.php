@@ -19,19 +19,19 @@
 
                     @if(request('search'))
                         <button
-                                value=' ' name="search" id="search"
-                                class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                            value=' ' name="search" id="search"
+                            class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
                             Limpar
                         </button>
                     @endif
 
                     <button
-                            class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                        class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
                         Procurar
                     </button>
 
 
-                    <a href="#"
+                    <a href="{{route('tarefa.create')}}"
                        class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
                         Criar Tarefa
                     </a>
@@ -73,7 +73,7 @@
 
                 <div class=" mt-4 rounded-md border border-dashed border-slate-300 p-8 min-h max-w-4xl w-full">
                     <div class="text-center font-medium">
-                        Nenhuma Tarefa foi Adicionada Ainda
+                        Nenhuma Tarefa foi Encontrada
                     </div>
                     <div class="text-center">
                         As Tarefas Adicionadas serão exibidas Aqui!
@@ -81,7 +81,6 @@
                 </div>
 
             @endforelse
-
 
 
         </div>
