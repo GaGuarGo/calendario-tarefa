@@ -32,6 +32,8 @@ Route::middleware('auth')->group(static function () {
 
     Route::resource('tarefa', TarefaController::class);
     Route::put('tarefa/{tarefa}/switchStatus', [TarefaController::class, 'switchStatus'])->name('tarefa.status');
+    Route::put('tarefa/{tarefa}/restore', [TarefaController::class, 'restore'])->name('tarefa.restore');
+    Route::delete('tarefa/{tarefa}/forceDestroy', [TarefaController::class, 'forceDestroy'])->name('tarefa.forceDestroy');
 
 });
 

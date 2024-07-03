@@ -51,6 +51,7 @@
                     'done' => 'Feitas',
                     'not_done' => 'Não Feitas',
                     'late' => 'Atrasadas',
+                    'deleted' => 'Excluidas'
             ];
 
                 @endphp

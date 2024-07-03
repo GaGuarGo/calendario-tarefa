@@ -36,6 +36,10 @@ class Tarefa extends Model
         return $this->prazo < now()->subtract(1,'day');
     }
 
+    public function isDeleted() : bool {
+        return ($this->deleted_at != null);
+    }
+
 
     public function scopeDoneTasks(Builder $query) : Builder | QueryBuilder  {
         return $query->where('status', '=', true);
@@ -49,5 +53,9 @@ class Tarefa extends Model
 
     public function scopeTodayTasks(Builder $query) : Builder | QueryBuilder  {
         return $query->whereDate('prazo', '=', Carbon::today());
+    }
+
+    public function scopeDeletedTasks(Builder $query) : Builder | QueryBuilder  {
+        return $query->onlyTrashed();
     }
 }

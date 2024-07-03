@@ -21,6 +21,7 @@ class TarefaController extends Controller
             'done' => $query->doneTasks(),
             'not_done' => $query->undoneTasks(),
             'late' => $query->lateTasks(),
+            'deleted' => $query->deletedTasks(),
             default => $query->latest(),
         };
 
@@ -93,5 +94,23 @@ class TarefaController extends Controller
     {
         $tarefa->switchStatus();
         return redirect()->back()->with('success', 'Tarefa atualizada com sucesso!');
+    }
+
+    public function restore(int $id)
+    {
+
+        $tarefa = Tarefa::withTrashed()->find($id);
+
+
+        $tarefa->restore();
+        return redirect()->back()->with('success', 'Tarefa restaurada com sucesso!');
+    }
+
+    public function forceDestroy(int $id)
+    {
+        $tarefa = Tarefa::withTrashed()->find($id);
+
+        $tarefa->forceDelete();
+        return redirect()->back()->with('success', 'Tarefa removida para sempre!');
     }
 }
