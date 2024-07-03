@@ -79,6 +79,11 @@
                 </div>
 
             @endforelse
+
+            @if($tarefas->count())
+                <nav class="mt-4"> {{ $tarefas->links() }}</nav>
+            @endif
+
         </div>
     </div>
 

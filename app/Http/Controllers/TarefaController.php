@@ -20,7 +20,7 @@ class TarefaController extends Controller
             $query->where('titulo', 'LIKE', '%' . $search . '%');
         }
 
-        $tarefas = $query->get();
+        $tarefas = $query->paginate(5);
 
         return view('tarefa.index', ['tarefas' => $tarefas]);
     }
