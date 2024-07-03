@@ -28,6 +28,11 @@ Route::get('register', function () {
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
 Route::delete('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
-Route::middleware('auth')->resource('tarefa',TarefaController::class);
+Route::middleware('auth')->group(static function () {
+
+    Route::resource('tarefa', TarefaController::class);
+    Route::put('tarefa/{tarefa}/switchStatus', [TarefaController::class, 'switchStatus'])->name('tarefa.status');
+
+});
 
 

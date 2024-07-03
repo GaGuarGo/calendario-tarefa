@@ -62,6 +62,8 @@
                 @endforeach
             </div>
 
+            <x-flash-message/>
+
             @forelse($tarefas as $tarefa)
 
                 <x-tarefa-tile :tarefa="$tarefa"/>

@@ -16,7 +16,14 @@ class Tarefa extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function getPrazo() : String {
+    public function getPrazo(): string
+    {
         return Carbon::parse($this->prazo)->format('d/m/Y');
+    }
+
+    public function switchStatus()
+    {
+        $this->status = !$this->status;
+        $this->save();
     }
 }

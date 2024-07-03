@@ -21,8 +21,15 @@
             </div>
 
             <div class="flex gap-4 justify-end mt-4">
-                <x-customized-button color="bg-cyan-200" hoverColor="bg-cyan-400"
-                                     text-color="text-cyan-700">{{$tarefa->status ? "Marcar com Não Feito" : "Marcar como Feito" }}</x-customized-button>
+
+                <form action="{{route('tarefa.status', $tarefa)}}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <x-customized-button color="bg-cyan-200" hoverColor="bg-cyan-400"
+                                         text-color="text-cyan-700">{{$tarefa->status ? "Marcar com Não Feito" : "Marcar como Feito" }}</x-customized-button>
+                </form>
+
+
                 <x-customized-button color="bg-blue-200" hoverColor="bg-blue-400" text-color="text-blue-700">Editar Tarefa</x-customized-button>
                 <x-customized-button color="bg-red-200" hoverColor="bg-red-400" text-color="text-red-700">Remover Tarefa</x-customized-button>
             </div>

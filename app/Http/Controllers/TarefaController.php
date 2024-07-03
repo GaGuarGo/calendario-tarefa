@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tarefa;
 use Illuminate\Http\Request;
 
 class TarefaController extends Controller
@@ -70,5 +71,10 @@ class TarefaController extends Controller
     public function destroy(string $id)
     {
         //
+    }
+
+    public function switchStatus(Tarefa $tarefa){
+        $tarefa->switchStatus();
+        return redirect()->back()->with('success', 'Tarefa atualizada com sucesso!');
     }
 }
