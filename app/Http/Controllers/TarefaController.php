@@ -47,7 +47,7 @@ class TarefaController extends Controller
      */
     public function store(Request $request)
     {
-       $validatedData = $request->validate([
+        $validatedData = $request->validate([
             'titulo' => 'string|required|min:3|max:100',
             'descricao' => 'string|required|min:10|',
             'prazo' => 'date|required',
@@ -58,27 +58,26 @@ class TarefaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Tarefa $tarefa)
     {
-        //
+        return view('tarefa.edit', ['tarefa' => $tarefa]);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Tarefa $tarefa)
     {
-        //
+        $validatedData = $request->validate([
+            'titulo' => 'string|required|min:3|max:100',
+            'descricao' => 'string|required|min:10|',
+            'prazo' => 'date|required',
+        ]);
+
+        $tarefa->update($validatedData);
+        return redirect()->route('tarefa.index')->with('success', 'Tarefa atualizada com sucesso!');
     }
 
     /**
@@ -89,7 +88,8 @@ class TarefaController extends Controller
         //
     }
 
-    public function switchStatus(Tarefa $tarefa){
+    public function switchStatus(Tarefa $tarefa)
+    {
         $tarefa->switchStatus();
         return redirect()->back()->with('success', 'Tarefa atualizada com sucesso!');
     }
