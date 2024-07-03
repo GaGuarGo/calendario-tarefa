@@ -11,7 +11,15 @@ class TarefaController extends Controller
      */
     public function index()
     {
-        $tarefas = auth()->user()?->tarefas()->latest()->get();
+        $query = auth()->user()?->tarefas()->latest();
+        $search = request('search');
+
+
+        if (!empty($search)) {
+            $query->where('titulo', 'LIKE', '%' . $search . '%');
+        }
+
+        $tarefas = $query->get();
 
         return view('tarefa.index', ['tarefas' => $tarefas]);
     }

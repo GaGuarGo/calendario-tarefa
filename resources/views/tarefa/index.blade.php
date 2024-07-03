@@ -7,21 +7,37 @@
 
             <x-label>Pesquisar Tarefa</x-label>
 
-            <div class="flex row-auto space-x-2">
-                <input type="search" name="search" id="search"
-                       class="w-full p-2 border rounded-lg"
-                       placeholder="Digite Aqui o nome da Tarefa"
-                       value="{{old('search') ?? request('search')}}">
 
-                <button
-                    class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
-                    Procurar
-                </button>
-                <button
-                    class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
-                    Criar Tarefa
-                </button>
-            </div>
+            <form action="{{route('tarefa.index')}}" method="GET">
+                <div class="flex space-x-2">
+
+
+                    <input type="text" name="search" id="search"
+                           class="w-full p-2 border rounded-lg"
+                           placeholder="Digite Aqui o nome da Tarefa"
+                           value="{{old('search') ?? request('search')}}">
+
+                    @if(request('search'))
+                        <button
+                            value=' ' name="search" id="search"
+                            class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                            Limpar
+                        </button>
+                    @endif
+
+                    <button
+                        class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                        Procurar
+                    </button>
+
+
+                    <a href="#"
+                       class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                        Criar Tarefa
+                    </a>
+                </div>
+            </form>
+
             <x-error-label>search</x-error-label>
 
 
