@@ -45,7 +45,8 @@
                 @php
 
                     $filters = [
-                    '' => 'Últimas',
+                    '' => 'Todas',
+                    'today' => 'Hoje',
                     'done' => 'Feitas',
                     'not_done' => 'Não Feitas',
                     'late' => 'Atrasadas',
@@ -80,9 +81,7 @@
 
             @endforelse
 
-            @if($tarefas->count())
-                <nav class="mt-4"> {{ $tarefas->links() }}</nav>
-            @endif
+
 
         </div>
     </div>

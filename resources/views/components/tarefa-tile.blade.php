@@ -13,7 +13,18 @@
                 <div class="font-semibold text-lg text-slate-700">
                     {{$tarefa->titulo}}
                 </div>
-                <x-status-label :status="$tarefa->status"/>
+                <div class="flex space-x-2">
+                    <x-status-label :status="$tarefa->status"/>
+                    @if($tarefa->isLate() && !$tarefa->status)
+                        <div class=
+                                 'rounded-xl border px-2 py-1
+                                 border-yellow-300 bg-yellow-200 text-yellow-700'>
+                            Atrasada
+                        </div>
+
+                    @endif
+
+                </div>
             </div>
 
             <div>
@@ -30,8 +41,12 @@
                 </form>
 
 
-                <x-customized-button color="bg-blue-200" hoverColor="bg-blue-400" text-color="text-blue-700">Editar Tarefa</x-customized-button>
-                <x-customized-button color="bg-red-200" hoverColor="bg-red-400" text-color="text-red-700">Remover Tarefa</x-customized-button>
+                <x-customized-button color="bg-blue-200" hoverColor="bg-blue-400" text-color="text-blue-700">Editar
+                    Tarefa
+                </x-customized-button>
+                <x-customized-button color="bg-red-200" hoverColor="bg-red-400" text-color="text-red-700">Remover
+                    Tarefa
+                </x-customized-button>
             </div>
 
         </div>

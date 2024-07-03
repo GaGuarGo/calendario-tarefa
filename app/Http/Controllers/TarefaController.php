@@ -10,17 +10,28 @@ class TarefaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
         $query = auth()->user()?->tarefas()->latest();
         $search = request('search');
+        $filter = $request->input("filter");
 
 
         if (!empty($search)) {
             $query->where('titulo', 'LIKE', '%' . $search . '%');
         }
 
-        $tarefas = $query->paginate(5);
+        $query = match ($filter) {
+            'today' => $query->todayTasks(),
+            'done' => $query->doneTasks(),
+            'not_done' => $query->undoneTasks(),
+            'late' => $query->lateTasks(),
+            default => $query->latest(),
+        };
+
+
+        $tarefas = $query->orderBy("prazo")->get();
+
 
         return view('tarefa.index', ['tarefas' => $tarefas]);
     }

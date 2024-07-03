@@ -23,8 +23,18 @@ class DatabaseSeeder extends Seeder
 
         User::factory(5)->create();
 
-        Tarefa::factory(50)->create([
+        Tarefa::factory(10)->create([
             'user_id' => 1
+        ]);
+
+        Tarefa::factory(10)->create([
+            'user_id' => 1,
+            'prazo' => now(),
+        ]);
+
+        Tarefa::factory(10)->create([
+            'user_id' => 1,
+            'prazo' => now()->subtract(random_int(1,5), 'days'),
         ]);
 
     }
