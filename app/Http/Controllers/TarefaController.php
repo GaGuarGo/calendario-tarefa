@@ -122,4 +122,8 @@ class TarefaController extends Controller
         return TarefaResource::collection($tarefas);
     }
 
+    public function calendar() {
+        return view('tarefa.calendar');
+    }
+
 }
