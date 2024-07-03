@@ -83,9 +83,10 @@ class TarefaController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Tarefa $tarefa)
     {
-        //
+        $tarefa->delete();
+        return redirect()->back()->with('success', 'Tarefa removida com sucesso!');
     }
 
     public function switchStatus(Tarefa $tarefa)

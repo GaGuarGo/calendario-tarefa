@@ -44,9 +44,13 @@
                 <x-customized-button :link="route('tarefa.edit', $tarefa)" color="bg-blue-200" hover="blue" text-color="text-blue-700">Editar
                     Tarefa
                 </x-customized-button>
-                <x-customized-button  link=""  color="bg-red-200" hover="red" text-color="text-red-700">Remover
-                    Tarefa
-                </x-customized-button>
+                <form action="{{route('tarefa.destroy', $tarefa)}}" method="POST">
+                    @method('DELETE')
+                    @csrf
+                    <x-customized-button  link=""  color="bg-red-200" hover="red" text-color="text-red-700">Remover
+                        Tarefa
+                    </x-customized-button>
+                </form>
             </div>
 
         </div>
