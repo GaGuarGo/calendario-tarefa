@@ -8,8 +8,8 @@
             </h4>
         </div>
 
-        <div class="flex-col">
-            <div class="flex gap-2 items-center">
+        <div class="flex-col w-full">
+            <div class="flex gap-2 items-center justify-between">
                 <div class="font-semibold text-lg text-slate-700">
                     {{$tarefa->titulo}}
                 </div>

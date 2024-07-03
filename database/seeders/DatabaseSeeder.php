@@ -23,7 +23,7 @@ class DatabaseSeeder extends Seeder
 
         User::factory(5)->create();
 
-        Tarefa::factory(5)->create([
+        Tarefa::factory(50)->create([
             'user_id' => 1
         ]);
 

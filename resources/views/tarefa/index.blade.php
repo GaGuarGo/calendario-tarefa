@@ -19,14 +19,14 @@
 
                     @if(request('search'))
                         <button
-                            value=' ' name="search" id="search"
-                            class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                                value=' ' name="search" id="search"
+                                class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
                             Limpar
                         </button>
                     @endif
 
                     <button
-                        class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
+                            class="rounded-md border border-slate-300 bg-white px-2.5 py-1.5 text-center text-sm font-semibold text-black shadow-sm hover:bg-slate-100">
                         Procurar
                     </button>
 
@@ -49,7 +49,6 @@
                     'done' => 'Feitas',
                     'not_done' => 'Não Feitas',
                     'late' => 'Atrasadas',
-                    'to_be_done' => 'A serem Feitas',
             ];
 
                 @endphp
