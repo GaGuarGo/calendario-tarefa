@@ -28,13 +28,28 @@
 
                 </div>
 
-                <div class="mb-4">
-                    <label for="prazo" class="block text-gray-700">Prazo da Tarefa:</label>
-                    <input type="date" name="prazo" id="prazo"
-                           class="w-full p-2 border rounded-lg @error('prazo') border-red-500 @enderror"
-                           value="{{$tarefa->prazo}}">
-                    <x-error-label>prazo</x-error-label>
-
+                <div class="flex w-full mb-4 space-x-4">
+                    <div class="flex-grow">
+                        <label for="prazo" class="block text-gray-700">Prazo da Tarefa:</label>
+                        <input type="date" name="prazo" id="prazo"
+                               class="w-full p-2 border rounded-lg @error('prazo') border-red-500 @enderror"
+                               value="{{$tarefa->prazo}}">
+                        <x-error-label>prazo</x-error-label>
+                    </div>
+                    <div class="flex-grow">
+                        <label for="start" class="block text-gray-700">Início:</label>
+                        <input type="time" name="start" id="start"
+                               class="w-full p-2 border rounded-lg @error('start') border-red-500 @enderror"
+                               value="{{$tarefa->start}}">
+                        <x-error-label>start</x-error-label>
+                    </div>
+                    <div class="flex-grow">
+                        <label for="end" class="block text-gray-700">Final:</label>
+                        <input type="time" name="end" id="end"
+                               class="w-full p-2 border rounded-lg @error('end') border-red-500 @enderror"
+                               value="{{$tarefa->end}}">
+                        <x-error-label>end</x-error-label>
+                    </div>
                 </div>
 
 

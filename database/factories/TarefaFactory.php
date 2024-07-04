@@ -22,8 +22,8 @@ class TarefaFactory extends Factory
             'descricao' => $this->faker->paragraph(3),
             'prazo' => now()->addDays(random_int(1, 30)),
             'status' => random_int(0, 1) == 1,
-            'start' => Carbon::now()->toDateTimeString(),
-            'end' => Carbon::now()->addMinutes(random_int(30, 120)),
+            'start' => Carbon::now()->addDays(random_int(1, 30))->rawFormat('Y-m-d H:i:s'),
+            'end' => Carbon::now()->addMinutes(random_int(30, 120))->format('Y-m-d H:i:s'),
         ];
     }
 }

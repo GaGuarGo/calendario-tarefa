@@ -10,7 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var calendar = new Calendar(calendarEl, {
         plugins: [dayGridPlugin, interactionPlugin],
         initialView: 'dayGridMonth',
-        events: '/api/tarefas', // URL da sua API de eventos
+        events: 'api/tarefas',
     });
 
     calendar.render();

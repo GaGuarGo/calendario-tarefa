@@ -31,46 +31,56 @@
                 {{$tarefa->descricao}}
             </div>
 
-            <div class="flex gap-4 justify-end mt-4 items-center">
+            <div class="flex gap-4 justify-between mt-4 items-center">
 
-                @if($tarefa->isDeleted())
+                <div class="space-x-2 flex bg-cyan-800 p-2 text-white rounded-md">
 
-                    <form action="{{route('tarefa.restore', $tarefa)}}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <x-customized-button link="" color="yellow">
-                            Restaurar Tarefa
-                        </x-customized-button>
-                    </form>
+                    <div>Início {{\Carbon\Carbon::parse($tarefa->start)->format('H:i')}}</div>
+                    <div> - </div>
+                    <div>Fim {{\Carbon\Carbon::parse($tarefa->end)->format('H:i')}}</div>
 
-                    <form action="{{route('tarefa.forceDestroy', $tarefa)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <x-customized-button link="" color="red">Remover
-                            Definitivamente
-                        </x-customized-button>
-                    </form>
+                </div>
 
-                @else
-                    <form action="{{route('tarefa.status', $tarefa)}}" method="POST">
-                        @csrf
-                        @method('PUT')
-                        <x-customized-button link=""
-                                             color="cyan">{{$tarefa->status ? "Marcar com Não Feito" : "Marcar como Feito" }}</x-customized-button>
-                    </form>
+               <div class="flex space-x-2">
+                   @if($tarefa->isDeleted())
+
+                       <form action="{{route('tarefa.restore', $tarefa)}}" method="POST">
+                           @csrf
+                           @method('PUT')
+                           <x-customized-button link="" color="yellow">
+                               Restaurar Tarefa
+                           </x-customized-button>
+                       </form>
+
+                       <form action="{{route('tarefa.forceDestroy', $tarefa)}}" method="POST">
+                           @method('DELETE')
+                           @csrf
+                           <x-customized-button link="" color="red">Remover
+                               Definitivamente
+                           </x-customized-button>
+                       </form>
+
+                   @else
+                       <form action="{{route('tarefa.status', $tarefa)}}" method="POST">
+                           @csrf
+                           @method('PUT')
+                           <x-customized-button link=""
+                                                color="cyan">{{$tarefa->status ? "Marcar com Não Feito" : "Marcar como Feito" }}</x-customized-button>
+                       </form>
 
 
-                    <x-customized-button :link="route('tarefa.edit', $tarefa)" color="blue">Editar
-                        Tarefa
-                    </x-customized-button>
-                    <form action="{{route('tarefa.destroy', $tarefa)}}" method="POST">
-                        @method('DELETE')
-                        @csrf
-                        <x-customized-button link="" color="red">Remover
-                            Tarefa
-                        </x-customized-button>
-                    </form>
-                @endif
+                       <x-customized-button :link="route('tarefa.edit', $tarefa)" color="blue">Editar
+                           Tarefa
+                       </x-customized-button>
+                       <form action="{{route('tarefa.destroy', $tarefa)}}" method="POST">
+                           @method('DELETE')
+                           @csrf
+                           <x-customized-button link="" color="red">Remover
+                               Tarefa
+                           </x-customized-button>
+                       </form>
+                   @endif
+               </div>
             </div>
 
         </div>

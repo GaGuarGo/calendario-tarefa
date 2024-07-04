@@ -53,6 +53,8 @@ class TarefaController extends Controller
             'titulo' => 'string|required|min:3|max:100',
             'descricao' => 'string|required|min:10|',
             'prazo' => 'date|required',
+            'start' => 'required|date_format:H:i',
+            'end' => 'required|date_format:H:i|after:start',
         ]);
 
         auth()->user()?->tarefas()->create($validatedData);
@@ -76,6 +78,8 @@ class TarefaController extends Controller
             'titulo' => 'string|required|min:3|max:100',
             'descricao' => 'string|required|min:10|',
             'prazo' => 'date|required',
+            'start' => 'required|date_format:H:i',
+            'end' => 'required|date_format:H:i|after:start',
         ]);
 
         $tarefa->update($validatedData);
@@ -115,14 +119,16 @@ class TarefaController extends Controller
         return redirect()->back()->with('success', 'Tarefa removida para sempre!');
     }
 
-    public function getUserTasksJson(){
+    public function getUserTasksJson()
+    {
 
         $tarefas = Tarefa::where('user_id', auth()->id())->get();
 
         return TarefaResource::collection($tarefas);
     }
 
-    public function calendar() {
+    public function calendar()
+    {
         return view('tarefa.calendar');
     }
 
