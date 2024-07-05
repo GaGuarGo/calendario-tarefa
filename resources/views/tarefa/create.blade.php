@@ -8,7 +8,7 @@
                 <div class="flex h-min mb-4 items-center justify-between">
                     <h2 class="text-2xl font-bold text-center">Criar Tarefa</h2>
 
-                    <div class="space-x-2">
+                    <div class="space-x-2 flex">
                         <x-back-button route="tarefa.index">Voltar</x-back-button>
                         <x-back-button route="tarefa.calendar">Voltar Calendário</x-back-button>
                     </div>

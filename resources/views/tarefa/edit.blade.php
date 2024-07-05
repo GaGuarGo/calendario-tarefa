@@ -8,7 +8,10 @@
                 @method('PUT')
                 <div class="flex h-min mb-4 items-center justify-between">
                     <h2 class="text-2xl font-bold text-center">Editar Tarefa</h2>
-                    <x-back-button route="tarefa.index">Voltar</x-back-button>
+                    <div class="space-x-2 flex">
+                        <x-back-button route="tarefa.index">Voltar</x-back-button>
+                        <x-back-button route="tarefa.calendar">Voltar Calendário</x-back-button>
+                    </div>
                 </div>
 
 

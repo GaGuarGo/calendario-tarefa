@@ -12,28 +12,29 @@
 
     @vite(['resources/css/app.css'])
 </head>
-<body class="from-10% via-30% to-90% mx-auto  bg-cyan-800 text-slate-700">
+<body class="from-10% via-30% to-90% mx-auto  bg-slate-50 text-slate-700">
 
 @auth
 
-    <nav>
+    <nav class="bg-white border-bottom shadow-sm mb-8">
+        <div class="flex justify-between py-4 px-8 text-black text-lg font-normal items-center ">
+            <h5 class="my-0 mr-md-auto font-weight-normal">Lista de Tarefas</h5>
 
-        <div class="flex justify-between py-4 px-8">
+            <div class="flex space-x-2">
+                <div class="flex space-x-4 items-center">
+                    <a href="{{route('tarefa.index')}}" class="text-dark hover:underline">Minha Lista</a>
+                    <a href="{{route('tarefa.calendar')}}" class=" text-dark  hover:underline">Ver
+                        Calendário</a>
 
-            <div class="flex space-x-4">
-                <a href="{{route('tarefa.index')}}" class="text-white text-lg font-medium hover:underline">Lista de
-                    Tarefas: {{auth()->user()->name}}</a>
-                <a href="{{route('tarefa.calendar')}}" class="text-white text-lg font-medium hover:underline">Ver
-                    Calendário</a>
+                </div>
 
-            </div>
-
-            <div class="text-white text-lg font-medium">
-                <form action="{{route('auth.logout')}}" method="POST">
-                    @csrf
-                    @method('DELETE')
-                    <button>Sair</button>
-                </form>
+                <div >
+                    <form action="{{route('auth.logout')}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button class="p-2 text-red font-bold">Sair</button>
+                    </form>
+                </div>
             </div>
 
 

@@ -3,7 +3,7 @@
 
     <div class="min-h-screen flex justify-center">
 
-        <div class="mb-4 max-w-4xl w-full">
+        <div class="mb-4 max-w-6xl w-full bg-white  px-16 rounded-md">
 
             <x-label>Pesquisar Tarefa</x-label>
 
