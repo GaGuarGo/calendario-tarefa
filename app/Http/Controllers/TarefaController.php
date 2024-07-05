@@ -40,7 +40,7 @@ class TarefaController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function show(String $id)
+    public function show(string $id)
     {
 
         $tarefa = Tarefa::findOrFail($id);
@@ -74,8 +74,10 @@ class TarefaController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Tarefa $tarefa)
+    public function edit(Tarefa $tarefa )
     {
+
+
         return view('tarefa.edit', ['tarefa' => $tarefa]);
     }
 
@@ -84,6 +86,7 @@ class TarefaController extends Controller
      */
     public function update(Request $request, Tarefa $tarefa)
     {
+
         $validatedData = $request->validate([
             'titulo' => 'string|required|min:3|max:100',
             'descricao' => 'string|required|min:10|',
@@ -93,6 +96,12 @@ class TarefaController extends Controller
         ]);
 
         $tarefa->update($validatedData);
+
+
+
+//        if () {
+//            return redirect()->route('tarefa.calendar')->with('success', 'Tarefa atualizada com sucesso!');
+//        }
         return redirect()->route('tarefa.index')->with('success', 'Tarefa atualizada com sucesso!');
     }
 
@@ -102,7 +111,9 @@ class TarefaController extends Controller
     public function destroy(Tarefa $tarefa)
     {
         $tarefa->delete();
-        return redirect()->back()->with('success', 'Tarefa removida com sucesso!');
+
+
+        return redirect()->route('tarefa.index')->with('success', 'Tarefa removida com sucesso!');
     }
 
     public function switchStatus(Tarefa $tarefa)
@@ -118,6 +129,7 @@ class TarefaController extends Controller
 
 
         $tarefa->restore();
+
         return redirect()->back()->with('success', 'Tarefa restaurada com sucesso!');
     }
 

@@ -69,9 +69,10 @@
                        </form>
 
 
-                       <x-customized-button :link="route('tarefa.edit', $tarefa)" color="blue">Editar
+                       <x-customized-button :link="route('tarefa.edit', ['tarefa' => $tarefa])" color="blue">Editar
                            Tarefa
                        </x-customized-button>
+
                        <form action="{{route('tarefa.destroy', $tarefa)}}" method="POST">
                            @method('DELETE')
                            @csrf

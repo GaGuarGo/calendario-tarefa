@@ -1,6 +1,10 @@
 <x-layout>
+
+
+
     <div class="flex justify-center items-center">
         <x-card class="w-full max-w-6xl">
+            <x-flash-message/>
             <div class="w-full h-full" id="calendar"></div>
         </x-card>
     </div>
@@ -23,10 +27,19 @@
                     slotMinTime: '08:00:00',
                     slotMaxTime: '19:00:00',
                     headerToolbar: {
-                        end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+                        end: 'today,dayGridMonth,timeGridWeek,timeGridDay,listWeek',
                         center: 'title',
-                        start: 'prev,next',
+                        start: 'prev,next,createTaskButton',
 
+                    },
+                    customButtons: {
+                        createTaskButton: {
+                            text: 'Criar Tarefa',
+                            click: function() {
+                                var redirectUrl = '/tarefa/create';
+                                window.location.href = redirectUrl;
+                            }
+                        }
                     },
                     buttonText: {
                         today: 'Hoje',

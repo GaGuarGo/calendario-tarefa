@@ -1,3 +1,4 @@
+
 <x-layout>
     <div class="min-h-screen flex items-start justify-center mt-40">
         <x-card class="max-w-xl w-full">
@@ -7,7 +8,7 @@
                 @method('PUT')
                 <div class="flex h-min mb-4 items-center justify-between">
                     <h2 class="text-2xl font-bold text-center">Editar Tarefa</h2>
-                    <x-back-button route="tarefa.index"/>
+                    <x-back-button route="tarefa.index">Voltar</x-back-button>
                 </div>
 
 
@@ -40,14 +41,14 @@
                         <label for="start" class="block text-gray-700">Início:</label>
                         <input type="time" name="start" id="start"
                                class="w-full p-2 border rounded-lg @error('start') border-red-500 @enderror"
-                               value="{{$tarefa->start}}">
+                               value="{{substr($tarefa->start, 0,5)}}">
                         <x-error-label>start</x-error-label>
                     </div>
                     <div class="flex-grow">
                         <label for="end" class="block text-gray-700">Final:</label>
                         <input type="time" name="end" id="end"
                                class="w-full p-2 border rounded-lg @error('end') border-red-500 @enderror"
-                               value="{{$tarefa->end}}">
+                               value="{{substr($tarefa->end, 0,5)}}">
                         <x-error-label>end</x-error-label>
                     </div>
                 </div>

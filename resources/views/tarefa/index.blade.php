@@ -68,7 +68,7 @@
 
             @forelse($tarefas as $tarefa)
 
-                <x-tarefa-tile :tarefa="$tarefa"/>
+                <x-tarefa-tile  :tarefa="$tarefa"/>
 
             @empty
 
