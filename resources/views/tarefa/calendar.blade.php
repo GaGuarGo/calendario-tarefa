@@ -27,9 +27,9 @@
                     slotMinTime: '08:00:00',
                     slotMaxTime: '19:00:00',
                     headerToolbar: {
-                        end: 'today,dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+                        end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
                         center: 'title',
-                        start: 'prev,next,createTaskButton',
+                        start: 'prev,today,next,createTaskButton',
 
                     },
                     customButtons: {

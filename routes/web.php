@@ -40,7 +40,9 @@ Route::middleware('auth')->group(static function () {
 
 //    Route::get('api/tarefas', [TarefaController::class, 'getUserTasksJson'])->name('tarefa.api');
     Route::get('/calendario', [TarefaController::class, 'calendar'])->name('tarefa.calendar');
-    Route::get('/meu-calendario/{url}', [TarefaController::class, 'publicCalendar'])->name('tarefa.public-calendar');
+
 });
+
+Route::get('/meu-calendario/{url}', [TarefaController::class, 'publicCalendar'])->name('tarefa.public-calendar');
 
 
