@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class TarefaController extends Controller
 {
+
+    public function  __construct()
+    {
+    $this->authorizeResource(Tarefa::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -40,11 +46,8 @@ class TarefaController extends Controller
      * Show the form for creating a new resource.
      */
 
-    public function show(string $id)
+    public function show(Tarefa $tarefa)
     {
-
-        $tarefa = Tarefa::findOrFail($id);
-
         return view('components.calendar-modal', ['tarefa' => $tarefa]);
 
     }
@@ -149,7 +152,7 @@ class TarefaController extends Controller
 
     public function calendar()
     {
-
+        $this->authorize('viewAny', Tarefa::class);
 
         $tarefas = TarefaResource::collection(Tarefa::where('user_id', auth()->id())->get());
 
