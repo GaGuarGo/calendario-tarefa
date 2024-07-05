@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\TarefaController;
+use App\Models\Tarefa;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,9 +27,11 @@ Route::get('register', function () {
     return view('auth.register');
 });
 Route::post('register', [AuthController::class, 'register'])->name('auth.register');
-Route::delete('logout', [AuthController::class, 'logout'])->name('auth.logout');
+
 
 Route::middleware('auth')->group(static function () {
+
+    Route::delete('logout', [AuthController::class, 'logout'])->name('auth.logout');
 
     Route::resource('tarefa', TarefaController::class);
     Route::put('tarefa/{tarefa}/switchStatus', [TarefaController::class, 'switchStatus'])->name('tarefa.status');

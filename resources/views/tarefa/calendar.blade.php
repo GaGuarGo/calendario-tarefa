@@ -1,75 +1,89 @@
 <x-layout>
-    <div class="flex justify-center">
-
-        <div class="bg-white p-8 rounded-md flex-col h-min">
-
-            <div class="flex justify-between">
-                <h2 class="text-2xl font-bold mb-6 text-center">Visualização do Calendário</h2>
-                <div class="calendar-buttons">
-                    <button class="active" data-view-type="dayGridMonth">Mês</button>
-                    <button data-view-type="timeGridWeek">Semana</button>
-                    <button data-view-type="timeGridDay">Dia</button>
-                </div>
-            </div>
-
-
-            <div class="max-w-6xl w-full " id='calendar'></div>
-        </div>
-
+    <div class="flex justify-center items-center">
+        <x-card class="w-full max-w-6xl">
+            <div class="w-full h-full" id="calendar"></div>
+        </x-card>
     </div>
 
-    @push('scripts')
+
+@push('scripts')
         <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.min.js"></script>
-        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/core/main.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet" />
-        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet" />
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.10.1/main.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.11.3/main.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/daygrid/main.css" rel="stylesheet"/>
+        <link href="https://cdn.jsdelivr.net/npm/@fullcalendar/timegrid/main.css" rel="stylesheet"/>
 
         <script>
             document.addEventListener('DOMContentLoaded', function () {
                 var calendarEl = document.getElementById('calendar');
                 var calendar = new FullCalendar.Calendar(calendarEl, {
+                    timeZone: 'local',
                     initialView: 'dayGridMonth',
-                    slotMinTime: '8:00:00',
+                    slotMinTime: '08:00:00',
                     slotMaxTime: '19:00:00',
+                    headerToolbar: {
+                        end: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek',
+                        center: 'title',
+                        start: 'prev,next',
+
+                    },
+                    buttonText: {
+                        today: 'Hoje',
+                        month: 'Mês',
+                        week: 'Semana',
+                        day: 'Dia',
+                        list: 'Compromissos'
+                    },
                     events: @json($tarefas),
+                    eventClick: function (info) {
+                        var redirectUrl = '/tarefa/' + info.event.id;
+                        window.location.href = redirectUrl;
+                    },
+                    eventMouseEnter: function (info) {
+                        info.el.style.backgroundColor = 'grey';
+                        info.el.style.color = '#00545c'
+                    },
+                    eventMouseLeave: function (info) {
+                        info.el.style.backgroundColor = '#00545c';
+                        info.el.style.color = 'white';
+                    },
                     eventTimeFormat: {
                         hour: '2-digit',
                         minute: '2-digit',
                     },
                     dayMaxEvents: 4,
                     locale: 'pt-br',
+
                     views: {
                         dayGridMonth: { // Visualização de mês
                             dayMaxEvents: 4 // Máximo de eventos por dia
                         },
                         timeGridWeek: { // Visualização de semana
                             type: 'timeGridWeek',
-                            slotMinTime: '8:00:00',
+                            slotMinTime: '08:00:00',
                             slotMaxTime: '19:00:00',
                             dayMaxEvents: 4 // Máximo de eventos por dia
                         },
                         timeGridDay: { // Visualização de dia
                             type: 'timeGridDay',
-                            slotMinTime: '8:00:00',
+                            slotMinTime: '08:00:00',
                             slotMaxTime: '19:00:00',
                             dayMaxEvents: 4 // Máximo de eventos por dia
                         }
                     },
-
                 });
                 calendar.render();
-                document.querySelectorAll('.calendar-buttons button').forEach(function(button) {
-                    button.addEventListener('click', function() {
-                        var viewType = this.dataset.viewType;
-                        calendar.changeView(viewType);
-                        document.querySelectorAll('.calendar-buttons button').forEach(function(btn) {
-                            btn.classList.remove('active');
-                        });
-                        this.classList.add('active');
-                    });
-                });
+
             });
+
+            function openModal() {
+                document.getElementById('eventModal').classList.remove('hidden');
+            }
+
+            function closeModal() {
+                document.getElementById('eventModal').classList.add('hidden');
+            }
         </script>
     @endpush
-
 </x-layout>

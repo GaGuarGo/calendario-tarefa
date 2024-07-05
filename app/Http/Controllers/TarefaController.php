@@ -39,6 +39,16 @@ class TarefaController extends Controller
     /**
      * Show the form for creating a new resource.
      */
+
+    public function show(String $id)
+    {
+
+        $tarefa = Tarefa::findOrFail($id);
+
+        return view('components.calendar-modal', ['tarefa' => $tarefa]);
+
+    }
+
     public function create()
     {
         return view('tarefa.create');

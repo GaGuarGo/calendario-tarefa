@@ -15,9 +15,12 @@ class TarefaResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
+            'id' => $this->id,
             'title' => $this->titulo,
             'start' => $this->prazo . " " . $this->start,
-            'end' => $this->prazo . " " . $this->end
+            'end' => $this->prazo . " " . $this->end,
+            'backgroundColor' => '#00545c',
+            'text-color' => 'white'
         ];
     }
 }

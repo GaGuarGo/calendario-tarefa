@@ -37,22 +37,29 @@
     display: inline-block;
     height: auto;
 }
-
-.calendar-buttons {
-    margin-bottom: 20px;
-}
-
-.calendar-buttons button {
-    margin-right: 0px;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    background-color: #00838F;
-    cursor: pointer;
-    border-radius: 8px;
-    color: white;
-}
-
-.calendar-buttons button.active {
+.fc-event {
     background-color: #00545c;
     color: white;
+    border: 1px solid #00545c;
+    border-radius: 5px;
+    padding: 5px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.fc-event:hover {
+    background-color: #00545c;
+    color: white;
+}
+
+.fc-event-title {
+    font-weight: bold;
+}
+
+.fc-event-time {
+    font-style: normal;
+    font-weight: bold;
+}
+
+.fc-event-dot {
+    display: none;
 }
