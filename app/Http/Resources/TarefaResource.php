@@ -16,8 +16,8 @@ class TarefaResource extends JsonResource
     {
         return [
             'title' => $this->titulo,
-            'start' => $this->start,
-            'end' => $this->end
+            'start' => $this->prazo . " " . $this->start,
+            'end' => $this->prazo . " " . $this->end
         ];
     }
 }

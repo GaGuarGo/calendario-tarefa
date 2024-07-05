@@ -13,3 +13,46 @@
 .filter-item-active {
     @apply bg-white shadow-sm text-slate-800 flex w-full items-center justify-center rounded-md px-4 py-2 text-center text-sm font-medium;
 }
+.fc-daygrid-day {
+    height: 130px;
+}
+
+.fc-daygrid-day-events {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.fc-daygrid-event {
+    max-height: 20px;
+    overflow: hidden;
+}
+
+.fc-daygrid-day-top {
+    height: auto;
+}
+
+.fc-daygrid-day-number {
+    display: inline-block;
+    height: auto;
+}
+
+.calendar-buttons {
+    margin-bottom: 20px;
+}
+
+.calendar-buttons button {
+    margin-right: 0px;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    background-color: #00838F;
+    cursor: pointer;
+    border-radius: 8px;
+    color: white;
+}
+
+.calendar-buttons button.active {
+    background-color: #00545c;
+    color: white;
+}

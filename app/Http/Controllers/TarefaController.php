@@ -129,7 +129,12 @@ class TarefaController extends Controller
 
     public function calendar()
     {
-        return view('tarefa.calendar');
+
+
+        $tarefas = TarefaResource::collection(Tarefa::where('user_id', auth()->id())->get());
+
+
+        return view('tarefa.calendar', ['tarefas' => $tarefas]);
     }
 
 }
