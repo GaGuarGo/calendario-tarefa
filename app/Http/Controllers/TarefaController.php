@@ -99,9 +99,7 @@ class TarefaController extends Controller
 
 
 
-//        if () {
-//            return redirect()->route('tarefa.calendar')->with('success', 'Tarefa atualizada com sucesso!');
-//        }
+
         return redirect()->route('tarefa.index')->with('success', 'Tarefa atualizada com sucesso!');
     }
 
@@ -157,6 +155,16 @@ class TarefaController extends Controller
 
 
         return view('tarefa.calendar', ['tarefas' => $tarefas]);
+    }
+
+    public function publicCalendar(?string $url) {
+
+        $uid = explode('-', $url)[1];
+
+        $tarefas = TarefaResource::collection(Tarefa::where('user_id', $uid)->get());
+
+        return view('tarefa.public-calendar', ['tarefas' => $tarefas]);
+
     }
 
 }

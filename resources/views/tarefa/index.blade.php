@@ -3,7 +3,7 @@
 
     <div class="min-h-screen flex justify-center">
 
-        <div class="mb-4 max-w-6xl w-full bg-white  px-16 rounded-md">
+        <div class="mb-4 max-w-6xl w-full bg-white h-min px-16 rounded-md pb-4">
 
             <x-label>Pesquisar Tarefa</x-label>
 
@@ -72,7 +72,7 @@
 
             @empty
 
-                <div class=" mt-4 rounded-md border border-dashed border-slate-300 p-8 min-h max-w-4xl w-full">
+                <div class=" mt-4 rounded-md border border-dashed border-slate-300 p-8 mb-8 w-full">
                     <div class="text-center font-medium">
                         Nenhuma Tarefa foi Encontrada
                     </div>

@@ -44,8 +44,23 @@ class User extends Authenticatable
         'password' => 'hashed',
     ];
 
-    public function tarefas() : HasMany {
+    public function tarefas(): HasMany
+    {
         return $this->hasMany(Tarefa::class);
+    }
+
+    public function createPublicUrl(): void
+    {
+
+        $url = strtolower($this->name);
+        $url = preg_replace('/[^a-zA-Z]/', '', $url);
+        $url = substr($url,0,3);
+
+        $url = $url .'-'. $this->id;
+
+
+        $this->lista_url = $url;
+        $this->update();
     }
 
 }

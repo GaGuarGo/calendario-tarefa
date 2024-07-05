@@ -46,9 +46,11 @@ class AuthController extends Controller
             'remember_token' => Str::random(10),
         ]);
 
+
         $credentials = $request->only('email', 'password');
 
         if (Auth::attempt($credentials, false)) {
+            auth()->user()?->createPublicUrl();
             return redirect()->route('login')->with('success', 'Cadastro Feito Com Sucesso. Agora faça login para acessar sua conta');
         }
 
