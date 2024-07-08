@@ -23,6 +23,12 @@ class DatabaseSeeder extends Seeder
 
         User::factory(5)->create();
 
+        $users = User::all();
+
+        foreach ($users as $user) {
+            $user->createPublicUrl();
+        }
+
         Tarefa::factory(10)->create([
             'user_id' => 1
         ]);

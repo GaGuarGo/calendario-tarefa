@@ -51,7 +51,7 @@ class AuthController extends Controller
 
         if (Auth::attempt($credentials, false)) {
             auth()->user()?->createPublicUrl();
-            return redirect()->route('login')->with('success', 'Cadastro Feito Com Sucesso. Agora faça login para acessar sua conta');
+            return redirect()->route('tarefa.index')->with('success', 'Cadastro Feito Com Sucesso.');
         }
 
         return back()->with('error', 'Erro ao Efetuar Cadastro');
