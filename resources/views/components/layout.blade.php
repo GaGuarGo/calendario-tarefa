@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Lista de Tarefas</title>
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
@@ -26,7 +27,7 @@
                         <h5>Link da Minha Lista de Tarefa: </h5>
                         <a id="link-tarefa" class="text-blue-800 font-bold ml-1"
                            href="{{route('tarefa.public-calendar', auth()->user()?->lista_url )}}">
-                            todolistleraning.com/meu-calendario/{{auth()->user()?->lista_url}}
+                            {{url()->route('tarefa.public-calendar',auth()->user()?->lista_url)}}
                         </a>
                     </div>
                 </div>
