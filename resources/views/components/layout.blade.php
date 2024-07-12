@@ -26,7 +26,7 @@
                         <h5>Link da Minha Lista de Tarefa: </h5>
                         <a id="link-tarefa" class="text-blue-800 font-bold ml-1"
                            href="{{route('tarefa.public-calendar', auth()->user()?->lista_url )}}">
-                            http://127.0.0.1:8000/meu-calendario/{{auth()->user()?->lista_url}}
+                            todolistleraning.com/meu-calendario/{{auth()->user()?->lista_url}}
                         </a>
                     </div>
                 </div>
