@@ -11,7 +11,7 @@
                     <label for="email" class="block text-gray-700">Email:</label>
                     <input type="email" name="email" id="email"
                            class="w-full p-2 border rounded-lg @error('email') border-red-500 @enderror"
-                           value="{{old('email') ?? request('email')}}">
+                           value="{{request('email')}}">
                     <x-error-label>email</x-error-label>
 
                 </div>
