@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', static fn () =>to_route('tarefa.index'));
+Route::get('/', static fn() => to_route('tarefa.index'));
 
 Route::get('login', function () {
     return view('auth.login');
@@ -38,7 +38,7 @@ Route::middleware('auth')->group(static function () {
     Route::put('tarefa/{tarefa}/restore', [TarefaController::class, 'restore'])->name('tarefa.restore');
     Route::delete('tarefa/{tarefa}/forceDestroy', [TarefaController::class, 'forceDestroy'])->name('tarefa.forceDestroy');
 
-//    Route::get('api/tarefas', [TarefaController::class, 'getUserTasksJson'])->name('tarefa.api');
+    //    Route::get('api/tarefas', [TarefaController::class, 'getUserTasksJson'])->name('tarefa.api');
     Route::get('/calendario', [TarefaController::class, 'calendar'])->name('tarefa.calendar');
 
 });
